@@ -5,5 +5,5 @@ go get -u github.com/kyawmyintthein/csvtojson
 
 
 ##Usage 
-import github.com/kyawmyintthein/csvtojson
-csv2json.ParseCsv("filename")
+import github.com/kyawmyintthein/csvtojson </br>
+err, str := csv2json.ParseCsv("filename")
