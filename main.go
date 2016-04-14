@@ -74,7 +74,7 @@ func ParseCsv(filename string) (error, string) {
 
 
 func WriteJson(jsonStr string,filename string){
-	err := ioutil.WriteFile(filename + ".json", jsonStr, 0644)
+	err := ioutil.WriteFile([]byte(string(jsonStr)), 0644)
     if err != nil {
         log.Fatal(err)
     }
