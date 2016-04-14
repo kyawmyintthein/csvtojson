@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"strings"
+	"io/ioutil"
 )
 
 var dat map[string]interface{}
@@ -69,4 +70,12 @@ func ParseCsv(filename string) (error, string) {
 	}
 	jsonStringResposne, _ := json.Marshal(objs)
 	return nil, string(jsonStringResposne)
+}
+
+
+func WriteJson(jsonStr string,filename string){
+	err := ioutil.WriteFile(filename + ".json", jsonStr, 0644)
+    if err != nil {
+        log.Fatal(err)
+    }
 }
