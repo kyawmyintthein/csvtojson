@@ -1,28 +1,27 @@
 package csv2json
 
-
 import (
 	"encoding/csv"
-	"io"
-	"os"
-	"log"
-	"strings"
 	"encoding/json"
+	"io"
+	"log"
+	"os"
+	"strings"
 )
 
 var dat map[string]interface{}
 
-func ParseCsv(filename string) (error, string){
+func ParseCsv(filename string) (error, string) {
 	// dat := make(map[string]interface{})
 	// var buffer bytes.Buffer
 	// get current directory
 	pwd, err := os.Getwd()
-    if err != nil {
-        log.Fatal(err)
-        return err, ""
-    }
+	if err != nil {
+		log.Fatal(err)
+		return err, ""
+	}
 
-    filePath := pwd +"/"+ filename + ".csv"
+	filePath := pwd + "/" + filename + ".csv"
 	// open file from current directory
 	file, err := os.Open(filePath)
 	if err != nil {
@@ -57,12 +56,12 @@ func ParseCsv(filename string) (error, string){
 
 		var obj = make(map[string]interface{})
 		if lineCount == 0 {
-			for _, fieldName := range record{
-					headers = append(headers,strings.ToLower(fieldName))
+			for _, fieldName := range record {
+				headers = append(headers, strings.ToLower(fieldName))
 			}
-		}else{
-			for index, value := range record{
-					obj[string(headers[index])] = value;
+		} else {
+			for index, value := range record {
+				obj[string(headers[index])] = value
 			}
 			objs = append(objs, obj)
 		}
@@ -71,4 +70,3 @@ func ParseCsv(filename string) (error, string){
 	jsonStringResposne, _ := json.Marshal(objs)
 	return nil, string(jsonStringResposne)
 }
-
