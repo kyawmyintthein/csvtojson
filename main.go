@@ -12,7 +12,7 @@ import (
 
 var dat map[string]interface{}
 
-func ReadCSV(filename string) (error, string){
+func ParseCsv(filename string) (error, string){
 	// dat := make(map[string]interface{})
 	// var buffer bytes.Buffer
 	// get current directory
